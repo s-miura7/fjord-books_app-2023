@@ -1,0 +1,25 @@
+ja:
+  book:
+    Book: 本
+    Author: 著者
+    author: 著者
+    Memo: メモ
+    memo: メモ
+    Picture: 写真
+    picture: 写真
+    Title: タイトル
+    title: タイトル
+  headline:
+    Books: 全ての本
+    Editing book: 本を編集
+    New book: 新しい本
+  action:
+    Show this book: この本を表示する
+    Back to books: 本の一覧に戻る
+    Edit this book: この本を編集する
+    New book: 新しい本を追加する
+  message:
+    prohibited this book from being saved: この本の保存に失敗しました。
+    Book was successfully created: 本の作成に成功しました。
+    Book was successfully updated: 本の更新に成功しました。
+    Book was successfully destroyed: 本の削除に成功しました。
