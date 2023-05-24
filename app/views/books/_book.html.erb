@@ -1,21 +1,21 @@
 <div id="<%= dom_id book %>">
   <p>
-    <strong><%= I18n.t 'book.Title' %>:</strong>
+    <strong><%= Book.human_attribute_name(:Title) %>:</strong>
     <%= book.title %>
   </p>
 
   <p>
-    <strong><%= I18n.t 'book.Memo' %>:</strong>
+    <strong><%= Book.human_attribute_name(:Memo) %>:</strong>
     <%= book.memo %>
   </p>
 
   <p>
-    <strong><%= I18n.t 'book.Book' %>:</strong>
+    <strong><%= Book.model_name.human %>:</strong>
     <%= book.author %>
   </p>
 
   <p>
-    <strong><%= I18n.t 'book.Picture' %>:</strong>
+    <strong><%= Book.human_attribute_name(:Picture) %>:</strong>
     <%= image_tag(book.picture_url) if book.picture.present? %>
   </p>
 

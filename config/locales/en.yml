@@ -30,16 +30,19 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  book:
-    Book: Book
-    Author: Author
-    author: author
-    Memo: Memo
-    memo: memo
-    Picture: Picture
-    picture: picture
-    Title: Title
-    title: title
+  activerecord:
+    models:
+      book: Book
+    attributes:
+      book:
+        Author: Author
+        author: author
+        Memo: Memo
+        memo: memo
+        Picture: Picture
+        picture: picture
+        Title: Title
+        title: title
   headline:
     Books: Books
     Editing book: Editing book

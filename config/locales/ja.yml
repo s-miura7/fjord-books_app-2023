@@ -1,14 +1,17 @@
 ja:
-  book:
-    Book: 本
-    Author: 著者
-    author: 著者
-    Memo: メモ
-    memo: メモ
-    Picture: 写真
-    picture: 写真
-    Title: タイトル
-    title: タイトル
+  activerecord:
+    models:
+      book: 本
+    attributes:
+      book:
+        Author: 著者
+        author: 著者
+        Memo: メモ
+        memo: メモ
+        Picture: 写真
+        picture: 写真
+        Title: タイトル
+        title: タイトル
   headline:
     Books: 全ての本
     Editing book: 本を編集
