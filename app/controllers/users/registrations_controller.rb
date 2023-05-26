@@ -60,7 +60,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  # rubocop:disable Lint/UnusedMethodArgument
   def after_update_path_for(resource)
     books_path
   end
+  # rubocop:enable Lint/UnusedMethodArgument
 end
