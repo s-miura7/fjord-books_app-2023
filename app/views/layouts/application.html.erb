@@ -15,13 +15,13 @@
       <% if user_signed_in? %>
         <%= t(".Logged_in_as") %> <strong><%= current_user.email %></strong>.
         <%= link_to t(".Edit_profile"), edit_user_registration_path, class: 'navbar-link' %> |
-        <%= link_to t(".Logout"), destroy_user_session_path, method: :get, class: 'navbar-link'  %> |
+        <%= link_to t(".Logout"), destroy_user_session_path, method: :get, class: 'navbar-link' %> |
       <% else %>
-        <%= link_to t(".Sign_up"), new_user_registration_path, class: 'navbar-link'  %> |
-        <%= link_to t(".Login"), new_user_session_path, class: 'navbar-link'  %> |
+        <%= link_to t(".Sign_up"), new_user_registration_path, class: 'navbar-link' %> |
+        <%= link_to t(".Login"), new_user_session_path, class: 'navbar-link' %> |
       <% end %>
-      <%= link_to t(".users"), users_path, class: 'navbar-link'  %> |
-      <%= link_to t(".books"), books_path, class: 'navbar-link'  %> |
+      <%= link_to t(".users"), users_path, class: 'navbar-link' %> |
+      <%= link_to t(".books"), books_path, class: 'navbar-link' %> |
     </p>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
