@@ -7,7 +7,7 @@
    <div class="index-item">
      <%= render book %>
       <p>
-       <%= link_to (I18n.t "action.Show this book"), book %>
+       <%= link_to (I18n.t "action.Show this book"), book_path(locale, book) %>
      </p>
    </div>
   <% end %>

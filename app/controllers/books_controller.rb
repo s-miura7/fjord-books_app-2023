@@ -22,10 +22,9 @@ class BooksController < ApplicationController
   # POST /books or /books.json
   def create
     @book = Book.new(book_params)
-
     respond_to do |format|
       if @book.save
-        format.html { redirect_to book_url(@book), notice: t('message.Book was successfully created') }
+        format.html { redirect_to book_url(locale, @book), notice: t('message.Book was successfully created') }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +37,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to book_url(@book), notice: t('message.Book was successfully updated') }
+        format.html { redirect_to book_url(locale, @book), notice: t('message.Book was successfully updated') }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -5,6 +5,6 @@
 <br>
 
 <nav class="page-nav">
-  <%= link_to (I18n.t "action.Show this book"), @book %> |
+  <%= link_to (I18n.t "action.Show this book"), book_path(locale, @book) %> |
   <%= link_to (I18n.t "action.Back to books"), books_path %>
 </nav>
