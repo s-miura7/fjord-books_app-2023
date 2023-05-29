@@ -9,10 +9,10 @@ class User < ApplicationRecord
 
   def avatar_content_type
     extension = ['image/jpg', 'image/png', 'image/gif']
-    errors.add(:avatar, "の拡張子が間違っています") unless avatar.in?(extension)
+    errors.add(:avatar, 'の拡張子が間違っています') unless avatar.in?(extension)
   end
 
   def was_attached?
-    self.avatar.attached?
+    avatar.attached?
   end
 end
