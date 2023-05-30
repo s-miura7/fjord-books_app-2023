@@ -44,16 +44,17 @@ en:
         Title: Title
         title: title
   headline:
-    Books: Books
-    Editing book: Editing book
-    New book: New book
+    targets: "%{target}s"
+    Editing_target: "Editing %{target}"
+    New_target: "New %{target}"
   action:
-    Show this book: Show this book
-    Back to books: Back to books
-    Edit this book: Edit this book
-    New book: New book
+    Show_target: "Show this %{target}"
+    Back_targets: "Back to %{target}s"
+    Edit_target: "Edit this %{target}"
+    New_target: "New %{target}"
+    destroy_target: "Destroy this %{target}"
   message:
-    prohibited this book from being saved: prohibited this book from being saved
-    Book was successfully created: Book was successfully created.
-    Book was successfully updated: Book was successfully updated.
-    Book was successfully destroyed: Book was successfully destroyed.
+    failed_target: "prohibited this %{target} from being saved"
+    created_target: "%{target} was successfully created"
+    updated_target: "%{target} was successfully updated"
+    destroyed_target: "%{target} was successfully destroyed"

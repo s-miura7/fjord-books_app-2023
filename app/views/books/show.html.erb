@@ -5,8 +5,8 @@
 </div>
 
 <nav class="page-nav">
-  <%= link_to (I18n.t "action.Edit this book"), edit_book_path(locale, @book) %> |
-  <%= link_to (I18n.t "action.Back to books"), books_path %>
+  <%= link_to (I18n.t"action.Edit_target", target: Book.model_name.human), edit_book_path(locale, @book) %> |
+  <%= link_to (I18n.t "action.Back_targets", target: Book.model_name.human), books_path %>
 
-  <%= button_to "action.Destroy this book", @book, method: :delete %>
+  <%= button_to (I18n.t "action.destroy_target", target: Book.model_name.human), @book, method: :delete %>
 </nav>

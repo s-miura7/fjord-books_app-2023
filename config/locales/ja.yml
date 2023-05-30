@@ -13,16 +13,17 @@ ja:
         Title: タイトル
         title: タイトル
   headline:
-    Books: 全ての本
-    Editing book: 本を編集
-    New book: 新しい本
+    targets: "全ての%{target}"
+    Editing_target: "%{target}を編集"
+    New_target: "新しい%{target}"
   action:
-    Show this book: この本を表示する
-    Back to books: 本の一覧に戻る
-    Edit this book: この本を編集する
-    New book: 新しい本を追加する
+    Show_target: "この%{target}を表示する"
+    Back_targets: "%{target}の一覧に戻る"
+    Edit_target: "この%{target}を編集する"
+    New_target: "新しい%{target}を追加する"
+    destroy_target: "この%{target}を削除する"
   message:
-    prohibited this book from being saved: この本の保存に失敗しました。
-    Book was successfully created: 本の作成に成功しました。
-    Book was successfully updated: 本の更新に成功しました。
-    Book was successfully destroyed: 本の削除に成功しました。
+    failed_target: "%{target}の保存に失敗しました。"
+    created_target: "%{target}の作成に成功しました。"
+    updated_target: "%{target}の更新に成功しました。"
+    destroyed_target: "%{target}の削除に成功しました。"
