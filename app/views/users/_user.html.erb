@@ -1,5 +1,9 @@
 <div id="<%= dom_id user %>">
 
+  <%- if user.avatar.attached? %>
+    <%= image_tag user.avatar, :size => '40x40' %>
+  <% end %>
+
   <p>
     <strong><%= User.human_attribute_name(:email) %>:</strong>
     <%= user.email %>
