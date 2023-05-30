@@ -5,7 +5,7 @@
 </div>
 
 <nav class="page-nav">
-  <%= link_to (I18n.t"action.Edit_target", target: Book.model_name.human), edit_book_path(locale, @book) %> |
+  <%= link_to (I18n.t"action.Edit_target", target: Book.model_name.human), edit_book_path(@book, :locale => params[:locale]) %> |
   <%= link_to (I18n.t "action.Back_targets", target: Book.model_name.human), books_path %>
 
   <%= button_to (I18n.t "action.destroy_target", target: Book.model_name.human), @book, method: :delete %>
