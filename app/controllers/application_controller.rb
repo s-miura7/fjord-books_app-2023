@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
 
-  def default_url_options(options={})
+  def default_url_options(options = {})
     options.merge(locale: set_locale)
   end
 
