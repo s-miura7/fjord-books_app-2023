@@ -35,23 +35,19 @@ en:
       book: Book
     attributes:
       book:
-        Author: Author
         author: author
-        Memo: Memo
         memo: memo
-        Picture: Picture
         picture: picture
-        Title: Title
         title: title
   headline:
     targets: "%{target}s"
-    Editing_target: "Editing %{target}"
-    New_target: "New %{target}"
+    edit_target: "Editing %{target}"
+    new_target: "New %{target}"
   action:
-    Show_target: "Show this %{target}"
-    Back_targets: "Back to %{target}s"
-    Edit_target: "Edit this %{target}"
-    New_target: "New %{target}"
+    show_target: "Show this %{target}"
+    back_targets: "Back to %{target}s"
+    edit_target: "Edit this %{target}"
+    new_target: "New %{target}"
     destroy_target: "Destroy this %{target}"
   message:
     failed_target: "prohibited this %{target} from being saved"

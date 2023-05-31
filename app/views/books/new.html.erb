@@ -1,9 +1,9 @@
-<h1><%= I18n.t 'headline.New_target', target: Book.model_name.human %></h1>
+<h1><%= I18n.t 'headline.new_target', target: Book.model_name.human %></h1>
 
 <%= render "form", book: @book %>
 
 <br>
 
 <nav class="page-nav">
-  <%= link_to (I18n.t "action.Back_targets", target: Book.model_name.human), books_path %>
+  <%= link_to (I18n.t "action.back_targets", target: Book.model_name.human), books_path %>
 </nav>

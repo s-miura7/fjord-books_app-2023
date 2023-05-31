@@ -4,23 +4,19 @@ ja:
       book: 本
     attributes:
       book:
-        Author: 著者
         author: 著者
-        Memo: メモ
         memo: メモ
-        Picture: 写真
         picture: 写真
-        Title: タイトル
         title: タイトル
   headline:
     targets: "全ての%{target}"
-    Editing_target: "%{target}を編集"
-    New_target: "新しい%{target}"
+    edit_target: "%{target}を編集"
+    new_target: "新しい%{target}"
   action:
-    Show_target: "この%{target}を表示する"
-    Back_targets: "%{target}の一覧に戻る"
-    Edit_target: "この%{target}を編集する"
-    New_target: "新しい%{target}を追加する"
+    show_target: "この%{target}を表示する"
+    back_targets: "%{target}の一覧に戻る"
+    edit_target: "この%{target}を編集する"
+    new_target: "新しい%{target}を追加する"
     destroy_target: "この%{target}を削除する"
   message:
     failed_target: "%{target}の保存に失敗しました。"

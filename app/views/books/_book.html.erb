@@ -1,11 +1,11 @@
 <div id="<%= dom_id book %>">
   <p>
-    <strong><%= Book.human_attribute_name(:Title) %>:</strong>
+    <strong><%= Book.human_attribute_name(:title).capitalize %>:</strong>
     <%= book.title %>
   </p>
 
   <p>
-    <strong><%= Book.human_attribute_name(:Memo) %>:</strong>
+    <strong><%= Book.human_attribute_name(:memo).capitalize %>:</strong>
     <%= book.memo %>
   </p>
 
@@ -15,7 +15,7 @@
   </p>
 
   <p>
-    <strong><%= Book.human_attribute_name(:Picture) %>:</strong>
+    <strong><%= Book.human_attribute_name(:picture).capitalize %>:</strong>
     <%= image_tag(book.picture_url) if book.picture.present? %>
   </p>
 
