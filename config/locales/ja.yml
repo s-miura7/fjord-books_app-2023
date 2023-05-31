@@ -27,3 +27,7 @@ ja:
     created_target: "%{target}の作成に成功しました。"
     updated_target: "%{target}の更新に成功しました。"
     destroyed_target: "%{target}の削除に成功しました。"
+  helpers:
+    submit:
+      create: "登録する"
+      update: "更新する"

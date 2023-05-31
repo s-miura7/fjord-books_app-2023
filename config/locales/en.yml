@@ -58,3 +58,7 @@ en:
     created_target: "%{target} was successfully created"
     updated_target: "%{target} was successfully updated"
     destroyed_target: "%{target} was successfully destroyed"
+  helpers:
+    submit:
+      create: "Create Book"
+      update: "Update Book"
