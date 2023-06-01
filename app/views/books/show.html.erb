@@ -4,6 +4,19 @@
   <%= render @book %>
 </div>
 
+<div class="@comments-container">
+  <h2><%= t('views.common.title_index', name: i18n_pluralize(Comment.model_name.human)) %></h2>
+  <% if @book.comment.empty? %>
+    コメントがありません
+  <% else %>
+    <% @book.comment.each do |comment|%>
+      <%= render 'comments/comments', comment: comment, commentable: @book %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= render 'comments/form', comment: @comment, commentable: @book %>
+
 <nav class="page-nav">
   <%= link_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book) %> |
   <%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>

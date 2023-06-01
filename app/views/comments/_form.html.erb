@@ -1,0 +1,12 @@
+<%= form_with(model: [commentable, comment], local: true) do |form| %>
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_field :content %>
+  </div>
+  <%= form.hidden_field :commentable_id, value: commentable.id %>
+  <%= form.hidden_field :commentable_type, value: commentable.class %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
