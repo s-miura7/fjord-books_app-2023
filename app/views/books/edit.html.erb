@@ -1,10 +1,10 @@
-<h1>Editing book</h1>
+<h1><%= (I18n.t 'headline.edit_target',target: Book.model_name.human) %></h1>
 
 <%= render "form", book: @book %>
 
 <br>
 
-<div>
-  <%= link_to "Show this book", @book %> |
-  <%= link_to "Back to books", books_path %>
-</div>
+<nav class="page-nav">
+  <%= link_to (I18n.t "action.edit_target",target: Book.model_name.human), book_path(@book) %> |
+  <%= link_to (I18n.t "action.back_targets", target: Book.model_name.human), books_path %>
+</nav>
