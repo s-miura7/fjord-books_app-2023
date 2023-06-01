@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[ show edit update destroy ]
+  before_action :set_report, only: %i[show edit update destroy]
 
   # GET /reports or /reports.json
   def index
@@ -17,32 +19,31 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /reports or /reports.json
   def create
     render :new, status: :unprocessable_entity if report_params[:title].nil? && report_params[:content]
     @report = Report.new(report_params)
     @report.user = current_user
-      if @report.save
-        redirect_to report_url(@report), notice:  t('controllers.common.notice_create', name: Report.model_name.human)
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @report.save
+      redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-      render :edit, status: :unprocessable_entity if report_params[:title].nil? && report_params[:content]
+    render :edit, status: :unprocessable_entity if report_params[:title].nil? && report_params[:content]
     if @report.user == current_user
       if @report.update(report_params)
-        redirect_to report_url(@report), notice:  t('controllers.common.notice_update', name: Report.model_name.human)
+        redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
       else
         ender :edit, status: :unprocessable_entity
       end
     else
-      render :edit, status: 400
+      render :edit, status: :bad_request
     end
   end
 
@@ -50,20 +51,21 @@ class ReportsController < ApplicationController
   def destroy
     if @report.user == current_user
       @report.destroy
-      redirect_to reports_url, notice:  t('controllers.common.notice_destroy', name: Report.model_name.human)
+      redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
     else
-      render :show, status: 400
+      render :show, status: :bad_request
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_report
-      @report = Report.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def report_params
-      params.require(:report).permit(:title, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_report
+    @report = Report.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def report_params
+    params.require(:report).permit(:title, :content)
+  end
 end

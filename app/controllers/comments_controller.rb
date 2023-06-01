@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
-  before_action :set_commentable, only: %i[ create update]
-  before_action :set_comment, only: %i[ destroy update]
+  before_action :set_commentable, only: %i[create]
+  before_action :set_comment, only: %i[destroy]
 
   def create
     render :new, status: :unprocessable_entity if comment_params[:content].nil?
@@ -9,16 +11,16 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render @commentable, status: 400
+      render @commentable, status: :bad_request
     end
   end
 
   def destroy
     if @comment.user == current_user
       @comment.destroy
-      redirect_to report_url(params[:id]), notice:  t('controllers.common.notice_destroy', name: Comment.model_name.human)
+      redirect_to report_url(params[:id]), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
     else
-      render @commentable, status: 400
+      render @commentable, status: :bad_request
     end
   end
 
@@ -29,10 +31,10 @@ class CommentsController < ApplicationController
   end
 end
 
-  def set_commentable
-    @commentable = Module.const_get(comment_params[:commentable_type]).find(comment_params[:commentable_id])
-  end
+def set_commentable
+  @commentable = Module.const_get(comment_params[:commentable_type]).find(comment_params[:commentable_id])
+end
 
-  def set_comment
-    @comment = Comment.find(params[:id])
-  end
+def set_comment
+  @comment = Comment.find(params[:id])
+end
