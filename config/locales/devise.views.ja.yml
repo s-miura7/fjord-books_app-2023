@@ -145,7 +145,7 @@ ja:
       send_paranoid_instructions: アカウントが見つかった場合、アカウントのロック解除方法を数分以内にメールでご連絡します。
       unlocked: アカウントをロック解除しました。
     index:
-      Users_List: ユーザーリスト
+      users_List: ユーザーリスト
   errors:
     messages:
       already_confirmed: は既に登録済みです。ログインしてください。
