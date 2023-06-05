@@ -3,7 +3,7 @@
     <%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
   </p>
   <p>
-    <%= comment.user.name %>
+    <%= comment.user.name == "" ? comment.user.email : comment.user.name %>
     <%= comment.content %>
   </p>
   <% if comment.user == current_user %>
