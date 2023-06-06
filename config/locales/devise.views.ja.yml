@@ -33,11 +33,11 @@ ja:
       user: ユーザー
   layouts:
     application:
-      Logged_in_as: ログインしているアドレス
-      Edit_profile: プロフィールを編集
-      Logout: ログアウト
-      Sign_up: サインアップ
-      Login: ログイン
+      logged_in_as: ログインしているアドレス
+      edit_profile: プロフィールを編集
+      logout: ログアウト
+      sign_up: サインアップ
+      login: ログイン
       users: ユーザ一覧
       books: 本の一覧
   users:
@@ -145,7 +145,7 @@ ja:
       send_paranoid_instructions: アカウントが見つかった場合、アカウントのロック解除方法を数分以内にメールでご連絡します。
       unlocked: アカウントをロック解除しました。
     index:
-      users_List: ユーザーリスト
+      users_list: ユーザーリスト
   errors:
     messages:
       already_confirmed: は既に登録済みです。ログインしてください。
