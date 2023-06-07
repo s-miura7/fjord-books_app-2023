@@ -18,4 +18,12 @@ module ApplicationHelper
   def format_content(content)
     safe_join(content.split("\n"), tag.br)
   end
+
+  def create_link(text)
+    url_texts = text.scan(/(?:http:\/\/localhost:3000\/reports\/)(?:[\d]+)/).flatten
+    url_texts.each do |url_text|
+      text.gsub!(url_text) {"<a href='#{$&}'>#{$&}</a>"}
+    end
+    text
+  end
 end
