@@ -3,7 +3,13 @@
 <div class="show-item">
   <%= render @report %>
 </div>
-
+<h2>この日報に言及している日報</h2>
+<% @report.mentioned_reports.each do |report| %>
+  <p>
+    <%= report.title %>からリンク
+    <%= time_ago_in_words(report.created_at)%>
+  </p>
+<% end %>
 <%= render 'shared/comments', commentable: @report %>
 
 <nav class="page-nav">
