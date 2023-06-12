@@ -1,15 +1,6 @@
 <%= render @report %>
 
-<div class="@comments-container">
-  <h2><%= t('views.common.title_index', name: i18n_pluralize(Comment.model_name.human)) %></h2>
-  <% if @report.comments.empty? %>
-    コメントがありません
-  <% else %>
-    <% @report.comments.each do |comment| %>
-      <%= render 'comments/comments', comment: comment , commentable: @report %>
-    <% end %>
-  <% end %>
-</div>
+<%= render 'comments/comments',  commentable: @report %>
 
 <%= render 'comments/form', comment: @comment, commentable: @report %>
 <div>
