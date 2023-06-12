@@ -3,7 +3,7 @@
     <%= l comment.created_at %>
   </p>
   <p>
-    <%= comment.user.name == "" ? comment.user.email : comment.user.name %>
+    <%= current_user_name(comment.user) %>
     <%= comment.content %>
   </p>
   <% if comment.user == current_user %>
