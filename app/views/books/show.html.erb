@@ -9,7 +9,7 @@
   <% if @book.comments.empty? %>
     コメントがありません
   <% else %>
-    <% @book.comments.each do |comment| %>
+    <% @book.comments.order(:id).each do |comment| %>
       <%= render 'comments/comments', comment: comment, commentable: @book %>
     <% end %>
   <% end %>
