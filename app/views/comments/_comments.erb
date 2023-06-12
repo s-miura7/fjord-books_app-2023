@@ -1,10 +1,10 @@
 <div class="@comments-container">
   <h2><%= t('views.common.title_index', name: i18n_pluralize(Comment.model_name.human)) %></h2>
-  <% if @book.comments.empty? %>
+  <% if commentable.comments.empty? %>
     <%= t('views.common.nothing', name: Comment.model_name.human.upcase_first) %>
   <% else %>
-    <% @book.comments.order(:id).each do |comment| %>
-      <%= render 'comments/comment', comment: comment, commentable: @book %>
+    <% commentable.comments.order(:id).each do |comment| %>
+      <%= render 'comments/comment', comment: comment, commentable: commentable %>
     <% end %>
   <% end %>
 </div>
