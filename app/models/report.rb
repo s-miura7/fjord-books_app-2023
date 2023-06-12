@@ -2,5 +2,5 @@
 
 class Report < ApplicationRecord
   belongs_to :user
-  has_many :comment, as: :commentable, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 end

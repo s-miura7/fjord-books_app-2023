@@ -6,10 +6,10 @@
 
 <div class="@comments-container">
   <h2><%= t('views.common.title_index', name: i18n_pluralize(Comment.model_name.human)) %></h2>
-  <% if @book.comment.empty? %>
+  <% if @book.comments.empty? %>
     コメントがありません
   <% else %>
-    <% @book.comment.each do |comment| %>
+    <% @book.comments.each do |comment| %>
       <%= render 'comments/comments', comment: comment, commentable: @book %>
     <% end %>
   <% end %>
