@@ -2,7 +2,11 @@
 
 class CommentsController < ApplicationController
   def create
-    @commentable = Module.const_get(comment_params[:commentable_type]).find(comment_params[:commentable_id])
+    if params[:report_id].nil?
+      @commentable = Book.find(params[:book_id])
+    elsif
+      @commentable = Report.find(params[:report_id])
+    end
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
@@ -23,6 +27,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
       params.require(:comment).permit(:content, :commentable_id, :commentable_type)
   end

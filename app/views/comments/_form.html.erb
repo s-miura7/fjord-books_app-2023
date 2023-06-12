@@ -3,9 +3,6 @@
     <%= form.label :content, style: "display: block" %>
     <%= form.text_field :content %>
   </div>
-  <%= form.hidden_field :commentable_id, value: commentable.id %>
-  <%= form.hidden_field :commentable_type, value: commentable.class %>
-
   <div>
     <%= form.submit %>
   </div>
