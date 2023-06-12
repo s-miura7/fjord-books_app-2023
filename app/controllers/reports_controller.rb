@@ -23,7 +23,6 @@ class ReportsController < ApplicationController
 
   # POST /reports or /reports.json
   def create
-    render :new, status: :unprocessable_entity if report_params[:title].nil? && report_params[:content]
     @report = Report.new(report_params)
     @report.user = current_user
     if @report.save
@@ -35,7 +34,6 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-    render :edit, status: :unprocessable_entity if report_params[:title].nil? && report_params[:content]
     if @report.user == current_user
       if @report.update(report_params)
         redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)

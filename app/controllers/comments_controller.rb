@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[destroy]
 
   def create
-    render :new, status: :unprocessable_entity if comment_params[:content].nil?
     @comment = @commentable.comment.build(comment_params)
     @comment.user = current_user
     if @comment.save
