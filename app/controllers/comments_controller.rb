@@ -26,14 +26,16 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :commentable_id, :commentable_type)
+      params.require(:comment).permit(:content, :commentable_id, :commentable_type)
+  end
+
+  def set_commentable
+    @commentable = Module.const_get(comment_params[:commentable_type]).find(comment_params[:commentable_id])
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 end
 
-def set_commentable
-  @commentable = Module.const_get(comment_params[:commentable_type]).find(comment_params[:commentable_id])
-end
 
-def set_comment
-  @comment = Comment.find(params[:id])
-end
