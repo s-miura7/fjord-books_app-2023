@@ -33,21 +33,16 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-    if @report.user == current_user
-      if @report.update(report_params)
-        redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
-      else
-        ender :edit, status: :unprocessable_entity
-      end
+    if current_user.reports.find(params[:id]).update(report_params)
+      redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
-      render :edit, status: :bad_request
+      ender :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    if @report.user == current_user
-      @report.destroy
+    if current_user.reports.find(params[:id]).destroy
       redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
     else
       render :show, status: :bad_request
