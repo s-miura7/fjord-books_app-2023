@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :set_commentable, only: %i[create]
-  before_action :set_comment, only: %i[destroy]
-
   def create
+    @commentable = Module.const_get(comment_params[:commentable_type]).find(comment_params[:commentable_id])
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
@@ -15,6 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     if @comment.user == current_user
       @comment.destroy
       redirect_to report_url(params[:id]), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
@@ -24,17 +23,8 @@ class CommentsController < ApplicationController
   end
 
   private
-
   def comment_params
       params.require(:comment).permit(:content, :commentable_id, :commentable_type)
-  end
-
-  def set_commentable
-    @commentable = Module.const_get(comment_params[:commentable_type]).find(comment_params[:commentable_id])
-  end
-
-  def set_comment
-    @comment = Comment.find(params[:id])
   end
 end
 
