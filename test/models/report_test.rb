@@ -23,6 +23,7 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#save_mentions' do
+    @report2.send(:save_mentions)
     assert_equal @report1, @report2.mentioning_reports.first
     @report2.content = 'http://localhost:3000/reports/113629430'
     @report2.send(:save_mentions)
