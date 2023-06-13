@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     if params[:report_id].nil?
       @commentable = Book.find(params[:book_id])
-    elsif
+    elsif params[:book_id].nil?
       @commentable = Report.find(params[:report_id])
     end
     @comment = @commentable.comments.build(comment_params)
