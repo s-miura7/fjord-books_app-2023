@@ -1,9 +1,9 @@
 <div>
-  <p>
+  <li>
     <%= l comment.created_at %>
-  </p>
-  <p>
     <%= current_user_name(comment.user) %>
+  </li>
+  <p>
     <%= comment.content %>
   </p>
   <% if comment.user == current_user %>
