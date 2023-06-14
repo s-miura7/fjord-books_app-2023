@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show edit update destroy]
+  before_action :set_report, only: %i[show edit]
+  before_action :set_report_with_user, only: %i[update destroy]
+
 
   # GET /reports or /reports.json
   def index
@@ -19,7 +21,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
-    redirect_to reports_url, notice: t('controllers.common.notice_create', name: Report.model_name.human) if Report.find(params[:id]).user != current_user
+    redirect_to reports_url, notice: t('controllers.common.notice_create', name: Report.model_name.human) if @report.user != current_user
   end
 
   # POST /reports or /reports.json
@@ -34,7 +36,7 @@ class ReportsController < ApplicationController
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-    if current_user.reports.find(params[:id]).update(report_params)
+    if @report.update(report_params)
       redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit, status: :unprocessable_entity
@@ -43,7 +45,7 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    if current_user.reports.find(params[:id]).destroy
+    if @report.destroy
       redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
     else
       render :show, status: :bad_request
@@ -55,6 +57,10 @@ class ReportsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_report
     @report = Report.find(params[:id])
+  end
+
+  def set_report_with_user
+    @report = current_user.reports.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
