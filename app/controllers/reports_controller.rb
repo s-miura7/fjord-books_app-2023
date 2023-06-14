@@ -28,10 +28,6 @@ class ReportsController < ApplicationController
   end
 
   def update
-    # before_keys = @report.content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
-    # after_keys = report_params[:content].scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
-    # deleted_keys = before_keys.difference(after_keys)
-    # new_keys = after_keys.difference(before_keys)
     if @report.update(report_params)
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
