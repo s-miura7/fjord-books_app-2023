@@ -6,7 +6,7 @@
 <h2><%= t('views.common.show_mention', name: Report.model_name.human.downcase) %></h2>
 <% @report.mentioned_reports.each do |report| %>
   <p>
-    <%= report.title %>からリンク
+    <%= link_to report.title,report_path(report) %>からリンク
     <%= time_ago_in_words(report.created_at) %>
   </p>
 <% end %>
