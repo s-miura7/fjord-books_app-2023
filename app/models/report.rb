@@ -23,19 +23,20 @@ class Report < ApplicationRecord
   def created_on
     created_at.to_date
   end
+
   private
 
   def mention
-    keys = self.content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
+    keys = content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
     keys.each { |key| mentioning.create(mentioning_id: key) } unless keys.empty?
   end
 
   def update_mention
-    before_keys = self.content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
-    after_keys = self.content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
+    before_keys = content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
+    after_keys = content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
     deleted_keys = before_keys.difference(after_keys)
     new_keys = after_keys.difference(before_keys)
-    new_keys.each { |key|mentioning.find_by(mentioning_id: key).destroy } unless new_keys.empty?
+    new_keys.each { |key| mentioning.find_by(mentioning_id: key).destroy } unless new_keys.empty?
     deleted_keys.each { |key| mentioning.find_by(mentioning_id: key).destroy } unless deleted_keys.empty?
   end
 end
