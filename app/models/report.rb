@@ -13,6 +13,8 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
+  after_save :mention
+
   def editable?(target_user)
     user == target_user
   end
@@ -20,12 +22,10 @@ class Report < ApplicationRecord
   def created_on
     created_at.to_date
   end
+  private
 
-  def mention(report_id)
-    mentioning.create(mentioning_id: report_id)
-  end
-
-  def delete_mention(report_id)
-    mentioning.find_by(mentioning_id: report_id).destroy
+  def mention
+    keys = self.content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
+    keys.each { |key| mentioning.create(mentioning_id: key) } unless keys.empty?
   end
 end
