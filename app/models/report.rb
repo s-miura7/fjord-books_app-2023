@@ -14,7 +14,7 @@ class Report < ApplicationRecord
   validates :content, presence: true
 
   after_save :mention
-  after_update :update_mention
+  before_update :update_mention
 
   def editable?(target_user)
     user == target_user
@@ -32,11 +32,11 @@ class Report < ApplicationRecord
   end
 
   def update_mention
-    before_keys = content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
+    before_keys = Report.find(id).content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
     after_keys = content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
     deleted_keys = before_keys.difference(after_keys)
     new_keys = after_keys.difference(before_keys)
-    new_keys.each { |key| mentioning.find_by(mentioning_id: key).destroy } unless new_keys.empty?
+    new_keys.each { |key| mentioning.create(mentioning_id: key) } unless new_keys.empty?
     deleted_keys.each { |key| mentioning.find_by(mentioning_id: key).destroy } unless deleted_keys.empty?
   end
 end
