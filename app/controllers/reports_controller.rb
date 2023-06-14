@@ -4,15 +4,13 @@ class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit]
   before_action :set_report_with_user, only: %i[update destroy]
 
-
   # GET /reports or /reports.json
   def index
     @reports = Report.order(:id).page(params[:page])
   end
 
   # GET /reports/1 or /reports/1.json
-  def show
-  end
+  def show; end
 
   # GET /reports/new
   def new

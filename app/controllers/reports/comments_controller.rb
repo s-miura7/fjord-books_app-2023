@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Reports::CommentsController < ApplicationController
   before_action :set_report, only: %i[create destroy]
   def create
@@ -16,10 +18,11 @@ class Reports::CommentsController < ApplicationController
       render report_url(params[:id]), status: :bad_request
     end
   end
+
   private
 
   def comment_params
-      params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content)
   end
 
   def set_report

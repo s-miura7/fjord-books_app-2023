@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Books::CommentsController < ApplicationController
   before_action :set_book, only: %i[create destroy]
   def create
@@ -15,10 +17,11 @@ class Books::CommentsController < ApplicationController
       render book_url(params[:id]), status: :bad_request
     end
   end
+
   private
 
   def comment_params
-      params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content)
   end
 
   def set_book
