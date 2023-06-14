@@ -18,7 +18,9 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/edit
-  def edit; end
+  def edit
+    redirect_to reports_url, notice: t('controllers.common.notice_create', name: Report.model_name.human) if Report.find(params[:id]).user != current_user
+  end
 
   # POST /reports or /reports.json
   def create
