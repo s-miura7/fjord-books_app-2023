@@ -2,6 +2,7 @@
 
 class Books::CommentsController < ApplicationController
   before_action :set_book, only: %i[create destroy]
+
   def create
     if @book.comments.build(content: comment_params[:content], user: current_user).save
       redirect_to book_url(@book), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
