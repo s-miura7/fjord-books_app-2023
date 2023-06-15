@@ -8,7 +8,8 @@ class Reports::CommentsController < ApplicationController
     if comment.save
       redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render report_url(@reoprt), status: :unprocessable_entity
+      @error_comment = comment
+      render 'reports/show', status: :unprocessable_entity
     end
   end
 
