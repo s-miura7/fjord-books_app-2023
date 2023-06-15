@@ -18,7 +18,7 @@ class Books::CommentsController < ApplicationController
     if comment.destroy
       redirect_to book_url(@book), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
     else
-      render book_url(params[:id]), status: :unprocessable_entity
+      render book_url(@book), status: :unprocessable_entity
     end
   end
 
