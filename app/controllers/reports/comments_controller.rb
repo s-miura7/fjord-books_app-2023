@@ -3,7 +3,9 @@
 class Reports::CommentsController < ApplicationController
   before_action :set_report, only: %i[create destroy]
   def create
-    if @report.comments.build(content: comment_params[:content], user: current_user).save
+    comment = @report.comments.build(comment_params)
+    comment.user = current_user
+    if comment.save
       redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
       render report_url(@reoprt), status: :bad_request
