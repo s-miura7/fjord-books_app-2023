@@ -19,7 +19,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
-    render file: Rails.root.join('public/404.html'), status: 404, layout: false if @report.user != current_user
+    render file: Rails.root.join('public/404.html'), status: :not_found, layout: false if @report.user != current_user
   end
 
   # POST /reports or /reports.json
