@@ -15,11 +15,8 @@ class Reports::CommentsController < ApplicationController
 
   def destroy
     comment = current_user.comments.find(params[:id])
-    if comment.destroy
-      redirect_to report_url(@report), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
-    else
-      render report_url(@report), status: :unprocessable_entity
-    end
+    comment.destroy
+    redirect_to report_url(@report), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
