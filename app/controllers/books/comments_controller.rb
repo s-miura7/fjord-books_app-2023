@@ -9,15 +9,16 @@ class Books::CommentsController < ApplicationController
     if comment.save
       redirect_to book_url(@book), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render book_url(reoprt), status: :bad_request
+      render book_url(@book), status: :unprocessable_entity
     end
   end
 
   def destroy
-    if current_user.comments.find(params[:id]).destroy
+    comment = current_user.comments.find(params[:id])
+    if comment.destroy
       redirect_to book_url(@book), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
     else
-      render book_url(params[:id]), status: :bad_request
+      render book_url(params[:id]), status: :unprocessable_entity
     end
   end
 

@@ -8,15 +8,16 @@ class Reports::CommentsController < ApplicationController
     if comment.save
       redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render report_url(@reoprt), status: :bad_request
+      render report_url(@reoprt), status: :unprocessable_entity
     end
   end
 
   def destroy
-    if current_user.comments.find(params[:id]).destroy
+    comment = current_user.comments.find(params[:id])
+    if comment.destroy
       redirect_to report_url(@report), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
     else
-      render report_url(@report), status: :bad_request
+      render report_url(@report), status: :unprocessable_entity
     end
   end
 
