@@ -19,7 +19,7 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
-    redirect_to reports_url, notice: t('controllers.common.notice_create', name: Report.model_name.human) if @report.user != current_user
+    render file: Rails.root.join('public/404.html'), status: 404, layout: false if @report.user != current_user
   end
 
   # POST /reports or /reports.json
