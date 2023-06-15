@@ -16,12 +16,8 @@ class Books::CommentsController < ApplicationController
 
   def destroy
     comment = current_user.comments.find(params[:id])
-    raise
-    if comment.destroy
-      redirect_to book_url(@book), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
-    else
-      render book_url(@book), status: :unprocessable_entity
-    end
+    comment.destroy
+    redirect_to book_url(@book), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
