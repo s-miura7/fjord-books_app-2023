@@ -2,6 +2,7 @@
 
 class Reports::CommentsController < ApplicationController
   before_action :set_report, only: %i[create destroy]
+
   def create
     comment = @report.comments.build(comment_params)
     comment.user = current_user
