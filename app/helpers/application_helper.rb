@@ -20,10 +20,6 @@ module ApplicationHelper
   end
 
   def create_link(text)
-    url_texts = text.scan(%r{http://localhost:3000/reports/\d+})
-    url_texts.each do |url_text|
-      text.gsub!(url_text) { "<a href='#{::Regexp.last_match(0)}'>#{::Regexp.last_match(0)}</a>" }
-    end
-    text
+    text.gsub(%r{http://localhost:3000/reports/\d+}) { "<a href='#{Regexp.last_match(0)}'>#{Regexp.last_match(0)}</a>" }
   end
 end
