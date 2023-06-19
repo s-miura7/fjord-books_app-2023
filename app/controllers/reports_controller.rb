@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show edit]
-  before_action :set_report_with_user, only: %i[update destroy]
+  before_action :set_report, only: %i[show]
+  before_action :set_report_with_user, only: %i[edit update destroy]
 
   # GET /reports or /reports.json
   def index
@@ -18,9 +18,7 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/edit
-  def edit
-    render file: Rails.root.join('public/404.html'), status: :not_found, layout: false if @report.user != current_user
-  end
+  def edit; end
 
   # POST /reports or /reports.json
   def create
@@ -56,6 +54,8 @@ class ReportsController < ApplicationController
 
   def set_report_with_user
     @report = current_user.reports.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render file: Rails.root.join('public/404.html'), status: :not_found, layout: false
   end
 
   # Only allow a list of trusted parameters through.
