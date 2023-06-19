@@ -1,8 +1,20 @@
 <%= form_with(model: [commentable, Comment.new]) do |form| %>
+  <% if @error_comment.present? %>
+    <div id="error_explanation">
+      <h2><%= @error_comment.errors.count %>件のエラーが発生しました。</h2>
+      <ul>
+        <% @error_comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <%= form.label :content, style: "display: block" %>
     <%= form.text_field :content %>
   </div>
+
   <div>
     <%= form.submit %>
   </div>
