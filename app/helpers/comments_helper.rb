@@ -2,6 +2,6 @@
 
 module CommentsHelper
   def comment_user_name(user)
-    user.name.nil? || user.name.empty? ? user.email : user.name
+    user.name.presence || user.email
   end
 end
