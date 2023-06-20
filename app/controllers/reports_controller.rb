@@ -51,8 +51,6 @@ class ReportsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_report_with_user
     @report = current_user.reports.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    render file: Rails.root.join('public/404.html'), status: :not_found, layout: false
   end
 
   # Only allow a list of trusted parameters through.
