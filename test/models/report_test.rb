@@ -17,9 +17,8 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#created_on' do
-    assert_equal Time.zone.today.to_date, @report1.created_on
-    @report2.created_at = 'test'
-    assert_raises('NoMethod') { @report2.created_on }
+    assert_equal Time.zone.today, @report1.created_on
+    assert_not_equal @report1.created_at, @report1.created_on
   end
 
   test '#save_mentions' do
