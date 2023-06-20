@@ -6,7 +6,7 @@
 
 <%= render 'comments/comments',  commentable: @book %>
 
-<%= render 'comments/form', commentable: @book %>
+<%= render 'comments/form', commentable: @book, error_comment: @error_comment %>
 
 <nav class="page-nav">
   <%= link_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book) %> |

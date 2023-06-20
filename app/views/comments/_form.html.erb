@@ -1,9 +1,9 @@
 <%= form_with(model: [commentable, Comment.new]) do |form| %>
-  <% if @error_comment.present? %>
+  <% if error_comment.present? %>
     <div id="error_explanation">
-      <h2><%= t('errors.template.header', model: Comment.model_name.human.upcase_first, count: @error_comment.errors.count) %></h2>
+      <h2><%= t('errors.template.header', model: Comment.model_name.human.upcase_first, count: error_comment.errors.count) %></h2>
       <ul>
-        <% @error_comment.errors.full_messages.each do |message| %>
+        <% error_comment.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
