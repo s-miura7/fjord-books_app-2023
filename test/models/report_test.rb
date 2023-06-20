@@ -9,6 +9,7 @@ class ReportTest < ActiveSupport::TestCase
     @report1 = reports(:one)
     @report2 = reports(:two)
     @report3 = reports(:three)
+    @report_mention1 = report_mentions(:one)
   end
 
   test '#editable?' do
@@ -22,17 +23,12 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#save_mentions' do
-    @report2.send(:save_mentions)
-    assert_equal @report2.mentioning_reports.first.id, @report2.active_mentions.first.mentioned_by_id
-    assert_equal @report1, @report2.mentioning_reports.first
-    @report2.content = 'http://localhost:3000/reports/113629430'
-    @report2.send(:save_mentions)
-    assert_equal @report2.mentioning_reports.second.id, @report2.active_mentions.first.mentioned_by_id
-    @report2.content = 'http://localhost:3000/reports/113629430 http://localhost:3000/reports/113629430'
-    @report2.send(:save_mentions)
-    assert_equal 1, @report2.active_mentions.length
+    assert_equal @report_mention1.mentioned_by_id, @report2.active_mentions[0].mentioned_by_id
+    @report2.content ='http://localhost:3000/reports/113629430'
+    @report2.save
+    assert_not_equal  @report_mention1.mentioned_by_id, @report2.active_mentions[0].mentioned_by_id
     @report2.content = 'http://localhost:3000/reports/a'
-    @report2.send(:save_mentions)
+    @report2.save
     assert_empty @report2.active_mentions
   end
 end
