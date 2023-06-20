@@ -33,13 +33,13 @@ class ReportsTest < ApplicationSystemTestCase
     visit report_url(@report)
     click_on 'この日報を編集', match: :first
 
-    fill_in 'タイトル', with: @report.title
-    fill_in '内容', with: @report.content
+    fill_in 'タイトル', with: "日報の更新"
+    fill_in '内容', with: "日報を更新しました"
     click_on '更新する'
 
     assert_text '日報が更新されました。'
-    assert_text @report.title
-    assert_text @report.content
+    assert_text "日報の更新"
+    assert_text "日報を更新しました"
   end
 
   test 'should destroy Report' do
