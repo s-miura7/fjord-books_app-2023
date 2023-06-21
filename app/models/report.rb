@@ -13,7 +13,7 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  after_save :update_mention
+  after_save :update_mentions
 
   def editable?(target_user)
     user == target_user
@@ -25,7 +25,7 @@ class Report < ApplicationRecord
 
   private
 
-  def update_mention
+  def update_mentions
     mentionings.destroy_all
     new_keys = content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
     new_keys.each { |key| mentionings.create(mentioning_id: key) }
