@@ -1,0 +1,12 @@
+<div>
+  <p style="border-top: 2px dotted gray">
+    <%= l comment.created_at %>
+    <%= comment.user.name_or_email(comment.user) %>
+  </p>
+  <p>
+    <%= comment.content %>
+  </p>
+  <% if comment.user == current_user %>
+    <%= link_to t('views.common.destroy', name: Comment.model_name.human.downcase), [commentable, comment], data: { turbo_method: :delete } %>
+  <% end %>
+</div>
