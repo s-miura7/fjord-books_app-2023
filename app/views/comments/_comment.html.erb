@@ -1,7 +1,7 @@
 <div>
   <p style="border-top: 2px dotted gray">
     <%= l comment.created_at %>
-    <%= name_or_email(comment.user) %>
+    <%= comment.user.name_or_email(comment.user) %>
   </p>
   <p>
     <%= comment.content %>
