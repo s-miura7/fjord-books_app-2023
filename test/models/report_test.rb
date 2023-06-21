@@ -22,7 +22,7 @@ class ReportTest < ActiveSupport::TestCase
     assert_not_equal @report1.created_at, @report1.created_on
   end
 
-  test '#save_mentions' do
+  test '#save_report' do
     assert_equal @report_mention1.mentioned_by_id, @report2.active_mentions[0].mentioned_by_id
     @report2.content ='http://localhost:3000/reports/113629430'
     @report2.save
