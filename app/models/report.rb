@@ -26,8 +26,8 @@ class Report < ApplicationRecord
   private
 
   def update_mentions
-    mentionings.destroy_all
+    given_mentions.destroy_all
     new_keys = content.scan(%r{(?:http://localhost:3000/reports/)(\d+)}).flatten
-    new_keys.each { |key| mentionings.create(mentioning_id: key) }
+    new_keys.each { |key| given_mentions.create(mentioning_id: key) }
   end
 end
