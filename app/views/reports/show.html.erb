@@ -3,7 +3,13 @@
 <div class="show-item">
   <%= render @report %>
 </div>
-
+<h2><%= t('views.common.show_mention', name: Report.model_name.human.downcase) %></h2>
+<% @report.mentioned_reports.each do |report| %>
+  <p>
+    <%= link_to report.title,report_path(report) %><%= t('views.common.from_link') %>
+    <%= time_ago_in_words(report.created_at) %>
+  </p>
+<% end %>
 <%= render 'shared/comments', commentable: @report %>
 
 <nav class="page-nav">

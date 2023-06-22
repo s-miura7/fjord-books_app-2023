@@ -18,4 +18,8 @@ module ApplicationHelper
   def format_content(content)
     safe_join(content.split("\n"), tag.br)
   end
+
+  def create_link(text)
+    text.gsub(%r{http://localhost:3000/reports/\d+}) { "<a href='#{Regexp.last_match(0)}'>#{Regexp.last_match(0)}</a>" }
+  end
 end
